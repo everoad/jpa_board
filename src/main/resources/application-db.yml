@@ -1,0 +1,48 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      pool-name: HikariConnectionPool
+      username: coupon
+      password: '!1234qwer'
+      jdbc-url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+      driver-class-name: org.h2.Driver
+      minimum-idle: 3
+      maximum-pool-size: 10
+      idle-timeout: 250000 # db설정확인 후 세팅 필요
+      max-lifetime: 290000 # db설정확인 후 세팅 필요
+      validation-timeout: 10000 # db설정확인 후 세팅 필요
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        useLocalTransactionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+        useSSL: false
+        useUnicode: yes
+        characterEncoding: UTF-8
+        serverTimezone: Asia/Seoul
+        autoReconnection: true
+        allowMultiQueries: true
+  jpa:
+    hibernate.ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        connection:
+          characterEncoding: utf-8
+          Charset: utf-8
+          useUnicode: true
+        default_batch_fetch_size: 100
+        jdbc.lob.non_contextual_creation: true
+    defer-datasource-initialization: true
+  h2:
+    console:
+      enabled: true

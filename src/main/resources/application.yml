@@ -1,0 +1,22 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+  compression:
+    enabled: true
+    mime-types: application/json
+
+spring:
+  mvc:
+    format:
+      date: yyyy-MM-dd
+      date-time: yyyy-MM-dd HH:mm:ss
+  config:
+    import:
+      - classpath:application-app.yml
+      - classpath:application-db.yml
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+  file:
+    path: D:/study/${app.name}/logs
