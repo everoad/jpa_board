@@ -2,6 +2,7 @@ package com.study.server.domain.entity.board;
 
 import com.study.server.domain.dto.board.BoardDetailDto;
 import com.study.server.domain.dto.board.BoardFileDto;
+import com.study.server.domain.entity.Menu;
 import com.study.server.domain.entity.base.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -34,13 +35,18 @@ public class Board extends BaseEntity {
     @OneToMany(mappedBy = "board", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private final List<BoardFile> fileList = new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "menu_id", nullable = false)
+    private Menu menu;
+
     @Builder
-    public Board(String title, String content, List<BoardFileDto> fileList) {
+    public Board(String title, String content, List<BoardFileDto> fileList, Menu menu) {
         Assert.hasText(title, "title is empty.");
         Assert.hasText(content, "content is empty.");
         Assert.notNull(fileList, "fileList is null.");
         this.title = title;
         this.content = content;
+        this.menu = menu;
         this.updateFileList(fileList);
     }
 

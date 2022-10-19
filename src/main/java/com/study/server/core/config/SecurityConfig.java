@@ -36,7 +36,7 @@ public class SecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> web.ignoring()
-                .antMatchers("/files/**", "/h2-console/**", "/docs/index.html");
+                .antMatchers("/files/**", "/h2-console/**", "/actuator/**", "/docs/index.html");
     }
 
     @Bean

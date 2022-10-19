@@ -15,8 +15,7 @@ spring:
     import:
       - classpath:application-app.yml
       - classpath:application-db.yml
+      - classpath:application-actuator.yml
 logging:
-  level:
-    org.hibernate.SQL: DEBUG
   file:
     path: D:/study/${app.name}/logs
